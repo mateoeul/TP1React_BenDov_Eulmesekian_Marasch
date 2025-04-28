@@ -1,32 +1,58 @@
 import React from "react";
-
-const formulario = () => {
-
+import './formulario.css'
+const Formulario = () => {
     return(
-        
-        <div class="one-half column">
+        <div className="one-half column">
             <div>
                 <h2>Crear mi Cita</h2>
             </div>
 
-            <form >
+            <form>
                 <div>
                     <label>Nombre Mascota</label>
                 </div>
-                <input type="text" name="mascota" class="u-full-width" placeholder="Nombre Mascota" value="">
                 
-                    
-                <label>Nombre Dueño</label>
-                <input type="text" name="propietario" class="u-full-width" placeholder="Nombre dueño de la mascota" value="">
-                <label>Fecha</label><input type="date" name="fecha" class="u-full-width" value=""><label>hora</label>
-                <input type="time" name="hora" class="u-full-width"
-                     value="">
-                <label>Sintomas</label>
-                <textarea name="sintomas" class="u-full-width"></textarea><button type="submit"class="u-full-width button-primary">Agregar Cita</button>
+                <div>
+                    <input type="text" name="mascota" className="u-full-width" placeholder="Nombre Mascota" />
+                </div>
+                
+                <div>
+                    <label>Nombre Dueño</label>
+                </div>
 
+                <div>
+                    <input type="text" name="propietario" className="u-full-width" placeholder="Nombre dueño de la mascota" />
+                </div>
+                
+                <div>
+                    <label>Fecha</label>
+                </div>
+
+                <div>
+                    <input type="date" name="fecha" className="u-full-width" />
+                </div>
+
+                <div>
+                    <label>Hora</label>
+                </div>
+
+                <div>
+                    <input type="time" name="hora" className="u-full-width" />
+                </div>
+
+                <div>
+                    <label>Sintomas</label>
+                </div>
+
+                <div>
+                    <textarea name="sintomas" className="u-full-width"></textarea>
+                </div>
+
+                <div>
+                    <button type="submit" className="u-full-width button-primary">Agregar Cita</button>
+                </div>
             </form>
-
         </div>
-
     )
 }
+export default Formulario
