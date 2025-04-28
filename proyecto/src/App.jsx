@@ -14,6 +14,7 @@ function App() {
     <h1>Administrados de pacientes</h1>
       <div className='row'>
         <div className='one-half column'>
+          <h1>Crear cita</h1>
           <Formulario></Formulario>
         </div>
         <div className='one-half column'>

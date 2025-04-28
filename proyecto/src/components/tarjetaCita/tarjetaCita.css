@@ -26,12 +26,6 @@
     border-bottom-right-radius: 1rem;
   }
 
-  .button.eliminar,
-  .button.eliminar:hover {
-    background-color: #c10059;
-    color: white;
-    margin-top: 2rem;
-  }
 
   .alerta-error {
     background-color: white;

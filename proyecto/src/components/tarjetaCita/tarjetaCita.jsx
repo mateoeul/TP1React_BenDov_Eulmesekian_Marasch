@@ -1,5 +1,6 @@
 import React from "react";
-import './tarjetaCita.css'
+import './tarjetaCita.css';
+import Boton from "../boton/boton.jsx";  
 
 const tarjetaCita = (props) => {
     return(
@@ -8,8 +9,8 @@ const tarjetaCita = (props) => {
             <p>Dueño: <span>{props.dueño}</span></p>
             <p>Fecha: <span>{props.fecha}</span></p>
             <p>Hora: <span>{props.hora}</span></p>
-            <p>Sintomas: <span>{props.sintomas}</span>
-            </p><button class="button elimnar u-full-width">Eliminar ×</button>
+            <p>Sintomas: <span>{props.sintomas}</span></p>
+            <Boton></Boton>
         </div>
     )
 }

@@ -1,19 +1,17 @@
 import React from "react";
+import InputText from "../inputText/inputText.jsx";  
 import './formulario.css'
+
 const Formulario = () => {
     return(
         <div className="one-half column">
-            <div>
-                <h2>Crear mi Cita</h2>
-            </div>
-
             <form>
                 <div>
                     <label>Nombre Mascota</label>
                 </div>
                 
                 <div>
-                    <input type="text" name="mascota" className="u-full-width" placeholder="Nombre Mascota" />
+                    <InputText nombre="nombre" placeHolder="Nombre mascota"></InputText>
                 </div>
                 
                 <div>
@@ -21,7 +19,7 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                    <input type="text" name="propietario" className="u-full-width" placeholder="Nombre dueño de la mascota" />
+                    <InputText nombre="propietario" placeHolder="Nombre dueño de la mascota"></InputText>
                 </div>
                 
                 <div>
