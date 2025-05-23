@@ -6,9 +6,23 @@ import TarjetaCita from './components/tarjetaCita/tarjetaCita.jsx'
 import Formulario from './components/formulario/formulario.jsx'
 
 function App() {
+  const [citas, setCitas] = useState([]);
+
+  // Función para agregar una cita
+  const crearCita = (nuevaCita) => {
+    setCitas([...citas, nuevaCita]);
+  };
+
+  // Función para eliminar una cita por id
+  const eliminarCita = (id) => {
+    setCitas(citas.filter(cita => cita.id !== id));
+  };
+  
   const [count, setCount] = useState(0)
 
   return (
+
+    
     <>
     <div className='container'>
     <h1>Administrados de pacientes</h1>

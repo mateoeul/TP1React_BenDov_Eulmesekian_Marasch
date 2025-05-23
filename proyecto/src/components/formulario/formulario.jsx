@@ -1,17 +1,23 @@
 import React from "react";
 import InputText from "../inputText/inputText.jsx";  
 import './formulario.css'
+import { agregarCita } from "../../hooks/agregarCita.jsx";
 
 const Formulario = () => {
+    const resultado = agregarCita();
+    const formulario = resultado.formulario;
+    const cambios = resultado.cambios;
+    const envioForm = resultado.envioForm;
+
     return(
         <div className="one-half column">
-            <form>
+            <form onSubmit={envioForm}>
                 <div>
                     <label>Nombre Mascota</label>
                 </div>
                 
                 <div>
-                    <InputText nombre="nombre" placeHolder="Nombre mascota"></InputText>
+                    <InputText nombre="nombre" enCambio={cambios} placeHolder="Nombre mascota"></InputText>
                 </div>
                 
                 <div>
@@ -19,7 +25,7 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                    <InputText nombre="propietario" placeHolder="Nombre dueño de la mascota"></InputText>
+                    <InputText nombre="propietario" enCambio={cambios} placeHolder="Nombre dueño de la mascota"></InputText>
                 </div>
                 
                 <div>
@@ -27,7 +33,7 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                    <input type="date" name="fecha" className="u-full-width" />
+                    <input type="date" onChange={cambios} name="fecha" className="u-full-width" />
                 </div>
 
                 <div>
@@ -35,7 +41,7 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                    <input type="time" name="hora" className="u-full-width" />
+                    <input type="time" onChange={cambios} name="hora" className="u-full-width" />
                 </div>
 
                 <div>
@@ -43,7 +49,7 @@ const Formulario = () => {
                 </div>
 
                 <div>
-                    <textarea name="sintomas" className="u-full-width"></textarea>
+                    <textarea name="sintomas" onChange={cambios} className="u-full-width"></textarea>
                 </div>
 
                 <div>
