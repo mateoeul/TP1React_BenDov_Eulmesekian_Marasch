@@ -1,62 +1,87 @@
-import React from "react";
-import InputText from "../inputText/inputText.jsx";  
-import './formulario.css'
-import { agregarCita } from "../../hooks/agregarCita.jsx";
+import InputText from "../inputText/inputText.jsx";
+import "./formulario.css";
+import { useFormularioCita } from "../../hooks/useFormularioCita.jsx";
 
-const Formulario = () => {
-    const resultado = agregarCita();
-    const formulario = resultado.formulario;
-    const cambios = resultado.cambios;
-    const envioForm = resultado.envioForm;
+const Formulario = ({ onAgregarCita }) => {
+  const { formulario, cambios, setFormulario } = useFormularioCita();
 
-    return(
-        <div className="one-half column">
-            <form onSubmit={envioForm}>
-                <div>
-                    <label>Nombre Mascota</label>
-                </div>
-                
-                <div>
-                    <InputText nombre="nombre" enCambio={cambios} placeHolder="Nombre mascota"></InputText>
-                </div>
-                
-                <div>
-                    <label>Nombre Dueño</label>
-                </div>
+  const envioForm = (event) => {
+    event.preventDefault();
+    onAgregarCita(formulario);
 
-                <div>
-                    <InputText nombre="propietario" enCambio={cambios} placeHolder="Nombre dueño de la mascota"></InputText>
-                </div>
-                
-                <div>
-                    <label>Fecha</label>
-                </div>
+    // Limpiar formulario después de enviar
+    setFormulario({
+      nombre: "",
+      propietario: "",
+      fecha: "",
+      hora: "",
+      sintomas: ""
+    });
+  };
 
-                <div>
-                    <input type="date" onChange={cambios} name="fecha" className="u-full-width" />
-                </div>
-
-                <div>
-                    <label>Hora</label>
-                </div>
-
-                <div>
-                    <input type="time" onChange={cambios} name="hora" className="u-full-width" />
-                </div>
-
-                <div>
-                    <label>Sintomas</label>
-                </div>
-
-                <div>
-                    <textarea name="sintomas" onChange={cambios} className="u-full-width"></textarea>
-                </div>
-
-                <div>
-                    <button type="submit" className="u-full-width button-primary">Agregar Cita</button>
-                </div>
-            </form>
+  return (
+    <div className="one-half column">
+      <form onSubmit={envioForm}>
+        <div>
+          <label>Nombre Mascota</label>
+          <InputText
+            nombre="nombre"
+            enCambio={cambios}
+            placeHolder="Nombre mascota"
+            valor={formulario.nombre}
+          />
         </div>
-    )
-}
-export default Formulario
+
+        <div>
+          <label>Nombre Dueño</label>
+          <InputText
+            nombre="propietario"
+            enCambio={cambios}
+            placeHolder="Nombre dueño de la mascota"
+            valor={formulario.propietario}
+          />
+        </div>
+
+        <div>
+          <label>Fecha</label>
+          <input
+            type="date"
+            name="fecha"
+            onChange={cambios}
+            value={formulario.fecha}
+            className="u-full-width"
+          />
+        </div>
+
+        <div>
+          <label>Hora</label>
+          <input
+            type="time"
+            name="hora"
+            onChange={cambios}
+            value={formulario.hora}
+            className="u-full-width"
+          />
+        </div>
+
+        <div>
+          <label>Sintomas</label>
+          <textarea
+            name="sintomas"
+            onChange={cambios}
+            value={formulario.sintomas}
+            className="u-full-width"
+          ></textarea>
+        </div>
+
+        <div>
+          <button type="submit" className="u-full-width button-primary">
+            Agregar Cita
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Formulario;

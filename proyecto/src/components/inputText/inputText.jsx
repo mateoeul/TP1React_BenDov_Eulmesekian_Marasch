@@ -1,7 +1,16 @@
-const InputText = (props) => {
-    return(
-        <input type="text" name={`${props.nombre}`} onChange={props.enCambio} className="u-full-width" placeholder={`${props.placeHolder}`}/>
-    )
-}
+import React from "react";
 
-export default InputText
+const InputText = ({ nombre, enCambio, placeHolder, valor }) => {
+  return (
+    <input
+      type="text"
+      name={nombre}
+      placeholder={placeHolder}
+      onChange={enCambio}
+      value={valor}
+      className="u-full-width"
+    />
+  );
+};
+
+export default InputText;

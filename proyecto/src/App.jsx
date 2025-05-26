@@ -1,47 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import TarjetaCita from './components/tarjetaCita/tarjetaCita.jsx'
-import Formulario from './components/formulario/formulario.jsx'
+import { useState } from "react";
+import "./App.css";
+import TarjetaCita from "./components/tarjetaCita/tarjetaCita.jsx";
+import Formulario from "./components/formulario/formulario.jsx";
 
 function App() {
   const [citas, setCitas] = useState([]);
 
-  // Función para agregar una cita
-  const crearCita = (nuevaCita) => {
-    setCitas([...citas, nuevaCita]);
+  const agregarCita = (citaNueva) => {
+    setCitas([...citas, citaNueva]);
   };
 
-  // Función para eliminar una cita por id
-  const eliminarCita = (id) => {
-    setCitas(citas.filter(cita => cita.id !== id));
+  const eliminarCita = (indiceAEliminar) => {
+    const nuevasCitas = citas.filter((_, index) => index !== indiceAEliminar);
+    setCitas(nuevasCitas);
   };
-  
-  const [count, setCount] = useState(0)
 
   return (
-
-    
-    <>
-    <div className='container'>
-    <h1>Administrados de pacientes</h1>
-      <div className='row'>
-        <div className='one-half column'>
-          <h1>Crear cita</h1>
-          <Formulario></Formulario>
+    <div className="container">
+      <h1>Administrador de pacientes</h1>
+      <div className="row">
+        <div className="one-half column">
+          <h2>Crear cita</h2>
+          <Formulario onAgregarCita={agregarCita} />
         </div>
-        <div className='one-half column'>
-          <h1>Administra tus citas</h1>
-          <TarjetaCita nombre="Volo" dueño="Ciro" fecha="9/12/2018" hora="11pm" sintomas="le duele el pie"></TarjetaCita>
-          <TarjetaCita nombre="chechu" dueño="Eric" fecha="11/2/2001" hora="16pm" sintomas="zarpullido en la piel"></TarjetaCita>
-          <TarjetaCita nombre="wicnu" dueño="Tute" fecha="11/11/2007" hora="10am" sintomas="dolor de cabeza"></TarjetaCita>
-
+        <div className="one-half column">
+          <h2>Administra tus citas</h2>
+          {citas.map((cita, index) => (
+            <TarjetaCita
+              key={index}
+              id={index}
+              nombre={cita.nombre}
+              dueño={cita.propietario}
+              fecha={cita.fecha}
+              hora={cita.hora}
+              sintomas={cita.sintomas}
+              onEliminar={eliminarCita}
+            />
+          ))}
         </div>
       </div>
     </div>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;

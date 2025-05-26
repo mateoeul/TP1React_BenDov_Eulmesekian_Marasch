@@ -1,10 +1,11 @@
-import React from "react";
 import './boton.css'
 
-const Boton = () => {
-    return(
-        <button class="button elimnar u-full-width">Eliminar </button>
-    )
-}
+const Boton = ({ children, onClick }) => {
+    return (
+        <button className="button eliminar u-full-width" onClick={onClick}>
+            {children}
+        </button>
+    );
+};
 
-export default Boton
+export default Boton;

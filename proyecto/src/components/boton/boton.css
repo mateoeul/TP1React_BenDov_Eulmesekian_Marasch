@@ -1,6 +1,4 @@
-.button.eliminar,
-.button.eliminar:hover {
-  background-color: #c10059;
+button:hover{
+  background-color: red;
   color: white;
-  margin-top: 2rem;
 }
