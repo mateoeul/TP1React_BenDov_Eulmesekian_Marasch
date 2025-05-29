@@ -9,7 +9,6 @@ const Formulario = ({ onAgregarCita }) => {
     event.preventDefault();
     onAgregarCita(formulario);
 
-    // Limpiar formulario después de enviar
     setFormulario({
       nombre: "",
       propietario: "",

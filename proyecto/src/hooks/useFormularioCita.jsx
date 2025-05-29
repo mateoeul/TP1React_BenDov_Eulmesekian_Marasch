@@ -1,4 +1,3 @@
-// src/hooks/useFormularioCita.jsx
 import { useState } from "react";
 
 export const useFormularioCita = () => {

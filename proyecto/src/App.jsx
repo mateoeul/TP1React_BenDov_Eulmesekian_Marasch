@@ -1,10 +1,26 @@
-import { useState } from "react";
-import "./App.css";
-import TarjetaCita from "./components/tarjetaCita/tarjetaCita.jsx";
-import Formulario from "./components/formulario/formulario.jsx";
+import { useState, useEffect } from 'react';
+import './App.css';
+import TarjetaCita from './components/tarjetaCita/tarjetaCita.jsx';
+import Formulario from './components/formulario/formulario.jsx';
 
 function App() {
-  const [citas, setCitas] = useState([]);
+  const [citas, setCitas] = useState(() => {
+    const citasGuardadas = localStorage.getItem('citas');
+    return citasGuardadas ? JSON.parse(citasGuardadas) : [];
+  });
+
+  // ✅ Leer del localStorage al cargar la app
+  useEffect(() => {
+    const citasGuardadas = JSON.parse(localStorage.getItem('citas'));
+    if (citasGuardadas) {
+      setCitas(citasGuardadas);
+    }
+  }, []);
+
+  // ✅ Guardar en localStorage cada vez que se actualicen las citas
+  useEffect(() => {
+    localStorage.setItem('citas', JSON.stringify(citas));
+  }, [citas]);
 
   const agregarCita = (citaNueva) => {
     setCitas([...citas, citaNueva]);
