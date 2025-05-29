@@ -9,7 +9,6 @@ function App() {
     return citasGuardadas ? JSON.parse(citasGuardadas) : [];
   });
 
-  // ✅ Leer del localStorage al cargar la app
   useEffect(() => {
     const citasGuardadas = JSON.parse(localStorage.getItem('citas'));
     if (citasGuardadas) {
@@ -17,7 +16,6 @@ function App() {
     }
   }, []);
 
-  // ✅ Guardar en localStorage cada vez que se actualicen las citas
   useEffect(() => {
     localStorage.setItem('citas', JSON.stringify(citas));
   }, [citas]);
